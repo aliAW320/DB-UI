@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@color/colorBlue"
+    android:backgroundTint="@color/colorTeal"
     android:descendantFocusability="blocksDescendants"
     >
 

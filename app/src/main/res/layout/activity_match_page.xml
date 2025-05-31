@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.MatchPage"
+    android:background="@color/colorBlue">
+
+    <TextView
+        android:id="@+id/opponentUserName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="USER NAME"
+        android:textAlignment="center"
+        android:layout_margin="15dp"
+        android:textSize="30dp"
+        android:textColor="@color/colorWhite"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/UserScore"
+            android:textSize="50dp"
+            android:layout_marginLeft="100dp"/>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textColor="@color/colorWhite"
+            android:textSize="80dp"
+            android:layout_marginLeft="60dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/colorWhite"
+            android:textSize="50dp"
+            android:id="@+id/opponentScore"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="100dp"/>
+
+
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="50dp"
+        android:shadowRadius="@android:integer/config_longAnimTime"
+        android:text="Play"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:id="@+id/playButton"
+        android:backgroundTint="@color/colorOrange"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="50dp"
+        android:shadowRadius="@android:integer/config_longAnimTime"
+        android:text="Return to home"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:id="@+id/backButton"
+        android:backgroundTint="@color/colorOrange"/>
+
+
+</LinearLayout>

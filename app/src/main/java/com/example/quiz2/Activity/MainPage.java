@@ -25,10 +25,12 @@ public class MainPage extends AppCompatActivity {
 
         // Default fragment (Home)
         loadFragment(new HomeFragment());
+        tabLayout.getTabAt(1).select();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 Fragment selectedFragment = null;
 
                 switch (tab.getPosition()) {

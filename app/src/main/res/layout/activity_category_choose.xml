@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/categoryLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@color/colorBlue"
+    >
+
+    <TextView
+        android:id="@+id/chooseCategoryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a Category"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"
+        android:textColor="#FFFF" />
+
+    <Button
+        android:id="@+id/category1Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category 1"
+        android:textSize="18sp"
+        android:backgroundTint="@color/colorPink"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/category2Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category 2"
+        android:textSize="18sp"
+        android:backgroundTint="#03DAC5"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/category3Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category 3"
+        android:textSize="18sp"
+        android:backgroundTint="#FF5722"
+        android:textColor="#FFFFFF"
+        android:padding="12dp" />
+
+</LinearLayout>
