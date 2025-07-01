@@ -111,6 +111,12 @@ public class login extends AppCompatActivity {
                 }).start();
             }
         });
+        signUpButton.setOnClickListener(v -> {
+            startActivity(new Intent(login.this , SignUp.class));
+
+        });
+
 
     }
+
 }

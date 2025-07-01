@@ -1,6 +1,8 @@
 package com.example.quiz2.DTO;
 
-public class AddScoreDTO {
+import java.io.Serializable;
+
+public class AddScoreDTO implements Serializable {
     int match_id;
     int score;
 
@@ -23,5 +25,13 @@ public class AddScoreDTO {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "AddScoreDTO{" +
+                "match_id=" + match_id +
+                ", score=" + score +
+                '}';
     }
 }

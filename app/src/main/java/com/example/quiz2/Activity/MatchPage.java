@@ -95,7 +95,14 @@ public class MatchPage extends AppCompatActivity {
                     runOnUiThread(() -> {
                         opponentUserName.setText(opponent);
                         userScore.setText(String.valueOf(user_score));
-                        opponentScore.setText(String.valueOf(opponent_score));
+
+                        if ( opponent_score != -1){
+                            opponentScore.setText(String.valueOf(opponent_score));
+                        }
+                        else {
+                            opponentScore.setText(String.valueOf(0));
+                        }
+
                     });
 
                 } else {
@@ -146,7 +153,10 @@ public class MatchPage extends AppCompatActivity {
                                     String name = catObj.getString("name");
                                     categories.add(new Category(id, name));
                                 }
-                                Toast.makeText(this, "Categories loaded: " + categories.size(), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MatchPage.this, CategoryChoose.class);
+                                intent.putExtra("matchId" , matchId);
+                                intent.putExtra("categories" , new ArrayList<>(categories));
+                                startActivity(intent);
 
                             } else if ("Question".equals(message)) {
                                 List<QuestionDTO> questions = new ArrayList<>();
@@ -162,7 +172,6 @@ public class MatchPage extends AppCompatActivity {
                                     questions.add(new QuestionDTO(question, option1, option2, option3, option4, answer));
                                 }
                                 Toast.makeText(this, "Questions loaded: " + questions.size(), Toast.LENGTH_SHORT).show();
-                                // TODO: Show questions in UI
                             } else {
                                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
                             }

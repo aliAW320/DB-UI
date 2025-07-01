@@ -1,14 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.RankingFragment">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/colorBlue"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Button Group for Timeframe Selection -->
+    <RadioGroup
+        android:id="@+id/rgTimeframe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        >
 
-</FrameLayout>
+        <RadioButton
+            android:id="@+id/rbTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total"
+            android:checked="true"
+            android:gravity="center"
+            style="?android:attr/radioButtonStyle"
+            android:textColor="@color/colorWhite"
+            />
+        <!-- Consider using MaterialButtonToggleGroup for a more modern look if using Material Components -->
+
+        <RadioButton
+            android:id="@+id/rbMonthly"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Monthly"
+            android:gravity="center"
+            style="?android:attr/radioButtonStyle"
+            android:textColor="@color/colorWhite"/>
+
+        <RadioButton
+            android:id="@+id/rbWeekly"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Weekly"
+            android:gravity="center"
+            style="?android:attr/radioButtonStyle"
+            android:textColor="@color/colorWhite"/>
+    </RadioGroup>
+
+    <!-- Divider (optional) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Ranking List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRankingList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/list_item_ranking" />
+
+
+</LinearLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.QuestionPage"
+    android:background="@color/colorBlue">
+
+    <!-- Question TextView -->
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="20dp"
+        android:background="@color/colorWhite"
+        android:gravity="center"
+        android:text="Question will appear here"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <!-- Answer Button 1 -->
+    <Button
+        android:id="@+id/answerButton1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/questionText"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Option 1"
+        android:backgroundTint="@color/colorOrange"/>
+
+    <!-- Answer Button 2 -->
+    <Button
+        android:id="@+id/answerButton2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/answerButton1"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        android:text="Option 2"
+        android:backgroundTint="@color/colorOrange"
+        android:textSize="17dp"
+        />
+
+    <!-- Answer Button 3 -->
+    <Button
+        android:id="@+id/answerButton3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/answerButton2"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        android:text="Option 3"
+        android:backgroundTint="@color/colorOrange"
+        android:textSize="17dp"
+        />
+
+    <!-- Answer Button 4 -->
+    <Button
+        android:id="@+id/answerButton4"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/answerButton3"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="12dp"
+        android:text="Option 4"
+        android:backgroundTint="@color/colorOrange"
+        android:textSize="17dp"
+
+        />
+</RelativeLayout>

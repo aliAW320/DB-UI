@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <!-- Rank TextView -->
+    <TextView
+        android:id="@+id/tvRankItem"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        tools:text="1" /> <!-- tools:text is for preview purposes -->
+
+    <!-- Username TextView -->
+    <TextView
+        android:id="@+id/tvUsernameItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+        tools:text="PlayerOne" /> <!-- tools:text is for preview purposes -->
+
+    <!-- Score TextView (Optional) -->
+    <TextView
+        android:id="@+id/tvScoreItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        tools:text="15000 pts" /> <!-- tools:text is for preview purposes -->
+
+</LinearLayout>

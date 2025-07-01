@@ -1,14 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profileLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ProfileFragment">
+    android:padding="24dp"
+    android:background="@color/colorBlue">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:id="@+id/infoContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddQuestion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        android:layout_margin="10dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"
+            android:text="Username: JohnDoe"
+
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTotalMatches"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Total Matches: 12"
+            android:textSize="20dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/tvWinMatches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Win Matches: 7"
+            android:textSize="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/tvAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average Score: 14.56"
+            android:textSize="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/tvTotalRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Rank: 5"
+            android:textSize="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/tvMonthlyRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monthly Rank: 3"
+            android:textSize="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/tvWeeklyRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekly Rank: 1"
+            android:textSize="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/custom_edit_text"
+            android:backgroundTint="@color/colorTeal"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <!-- Button at the Bottom -->
+    <Button
+        android:id="@+id/btnAddQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Add Question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="50dp"
+        android:textSize="15dp"
+        android:backgroundTint="@color/colorOrange"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,9 @@
 package com.example.quiz2.DTO;
 
 
-public class QuestionDTO {
+import java.io.Serializable;
+
+public class QuestionDTO implements Serializable {
     private String question;
     private String option1;
     private String option2;
@@ -64,5 +66,17 @@ public class QuestionDTO {
 
     public void setAnswer(int answer) {
         this.answer = answer;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionDTO{" +
+                "question='" + question + '\'' +
+                ", option1='" + option1 + '\'' +
+                ", option2='" + option2 + '\'' +
+                ", option3='" + option3 + '\'' +
+                ", option4='" + option4 + '\'' +
+                ", answer=" + answer +
+                '}';
     }
 }

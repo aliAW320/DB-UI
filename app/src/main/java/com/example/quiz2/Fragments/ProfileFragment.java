@@ -1,66 +1,121 @@
 package com.example.quiz2.Fragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.quiz2.Activity.AllCategoryChooser;
+import com.example.quiz2.Activity.MatchPage;
+import com.example.quiz2.DTO.ProfileDTO;
 import com.example.quiz2.R;
+import com.example.quiz2.Tools.IP;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.json.JSONObject;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView tvUsername, tvTotalMatches, tvWinMatches, tvAverage, tvTotalRank, tvMonthlyRank, tvWeeklyRank;
+    private Button btnAddQuestion;
 
     public ProfileFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        tvUsername = view.findViewById(R.id.tvUsername);
+        tvTotalMatches = view.findViewById(R.id.tvTotalMatches);
+        tvWinMatches = view.findViewById(R.id.tvWinMatches);
+        tvAverage = view.findViewById(R.id.tvAverage);
+        tvTotalRank = view.findViewById(R.id.tvTotalRank);
+        tvMonthlyRank = view.findViewById(R.id.tvMonthlyRank);
+        tvWeeklyRank = view.findViewById(R.id.tvWeeklyRank);
+        btnAddQuestion = view.findViewById(R.id.btnAddQuestion);
+
+        btnAddQuestion.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), AllCategoryChooser.class);
+            startActivity(intent);
+        });
+
+        fetchProfileData();
+    }
+
+    private void fetchProfileData() {
+        new Thread(() -> {
+            SharedPreferences prefs = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            String token = prefs.getString("jwt_token", "");
+
+            OkHttpClient client = new OkHttpClient();
+            String url = "http://" + IP.getIp() + "/getProfile";
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .get()
+                    .addHeader("Authorization", "Bearer " + token)
+                    .build();
+
+            try (Response response = client.newCall(request).execute()) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String jsonData = response.body().string();
+                    JSONObject jsonObject = new JSONObject(jsonData);
+
+                    // Parse JSON to ProfileDTO
+                    ProfileDTO profile = new ProfileDTO();
+                    profile.setUserName(jsonObject.optString("userName"));
+                    profile.setTotalMatches(jsonObject.optInt("totalMatches"));
+                    profile.setWinMatches(jsonObject.optInt("winMatches"));
+                    profile.setAvrage(jsonObject.optDouble("avrage"));
+                    profile.setTotalRank(jsonObject.optInt("totalRank"));
+                    profile.setMonthlyRank(jsonObject.optInt("monthlyRank"));
+                    profile.setWeeklyRank(jsonObject.optInt("weeklyRank"));
+
+                    // Update UI on main thread
+                    requireActivity().runOnUiThread(() -> bindProfileData(profile));
+                } else {
+                    requireActivity().runOnUiThread(() ->
+                            Toast.makeText(requireContext(), "Failed to load profile: " + response.code(), Toast.LENGTH_SHORT).show()
+                    );
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                requireActivity().runOnUiThread(() ->
+                        Toast.makeText(requireContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
+            }
+        }).start();
+    }
+
+    private void bindProfileData(ProfileDTO dto) {
+        tvUsername.setText("Username: " + dto.getUserName());
+        tvTotalMatches.setText("Total Matches: " + dto.getTotalMatches());
+        tvWinMatches.setText("Win Matches: " + dto.getWinMatches());
+        tvAverage.setText("Average Score: " + dto.getAvrage());
+        tvTotalRank.setText("Total Rank: " + dto.getTotalRank());
+        tvMonthlyRank.setText("Monthly Rank: " + dto.getMonthlyRank());
+        tvWeeklyRank.setText("Weekly Rank: " + dto.getWeeklyRank());
     }
 }

@@ -1,10 +1,12 @@
 package com.example.quiz2.DTO;
 
-public class CategoryEntryDTO {
+import java.io.Serializable;
+
+public class CategoryEntryDTO implements Serializable {
     private int category_id;
     private int match_id;
 
-    public CategoryEntryDTO(int category_id, int match_id) {
+    public CategoryEntryDTO(int category_id, int match_id)  {
         this.category_id = category_id;
         this.match_id = match_id;
     }
